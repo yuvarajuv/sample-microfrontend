@@ -1,4 +1,4 @@
-# [Microfrontend Web App](https://Microfrontend.ai/)
+# Microfrontend Web App
 
 
 ## Installation
