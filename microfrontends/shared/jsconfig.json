@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "baseUrl": "./src",
+    "paths": {
+      "@/Icons/*": [
+        "./components/Icons/*"
+      ],
+      "@/*": [
+        "./*"
+      ],
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

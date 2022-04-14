@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="favicon.ico" />
+    <title>Microfrontend</title>
+    <style>
+      :root {
+        --bg-popup: #ffffff;
+        --text-primary: #202026;
+        --accent: #ff9900;
+        --link-accent-text: #3e3e46;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--bg-popup);
+        font-family: Metropolis, sans-serif;
+        color: var(--text-primary);
+      }
+      .offline__container {
+        display: flex;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+      }
+      .offline__box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+      .offline__image {
+        margin-bottom: 2.25rem;
+      }
+      .offline__image *[stroke] {
+        stroke: var(--accent);
+      }
+      .offline__box h2 {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 2rem;
+        line-height: 1.5rem;
+        margin-bottom: 1.5rem;
+        margin-top: 0;
+      }
+      .offline__box p {
+        font-weight: 500;
+        font-size: 1rem;
+        line-height: 1rem;
+        margin-bottom: 2rem;
+        margin-top: 0;
+      }
+      .offline__box button {
+        color: var(--link-accent-text);
+        font-weight: 500;
+        font-size: 0.938rem;
+        line-height: 1rem;
+        text-align: center;
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
+        padding: 0.5rem 1.25rem;
+        border-radius: 0.25rem;
+        border: none;
+        outline: none;
+        background-color: var(--accent);
+        cursor: pointer;
+      }
+    </style>
+
+    <script>
+      let localStorageTheme = localStorage.getItem('theme')
+      if (!localStorageTheme) {
+        localStorageTheme = 'light'
+      }
+      if (localStorageTheme === 'dark') {
+        var style = document.createElement('style')
+        style.innerHTML = `
+        :root{
+          --bg-popup: #202026;
+          --text-primary: #FFFFFF;
+          --accent: #FF9900;
+          --link-accent-text: #3E3E46;
+        }
+        `
+        document.head.appendChild(style)
+      }
+    </script>
+  </head>
+
+  <body>
+    <div class="offline__container">
+      <div class="offline__box">
+        <div class="offline__image">
+          <svg
+            width="80"
+            height="80"
+            viewBox="0 0 80 80"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M28.9839 21.0574C27.9227 17.5203 27.3922 15.7517 28.2918 14.5425C29.1915 13.3333 31.038 13.3333 34.7308 13.3333H45.2691C48.962 13.3333 50.8084 13.3333 51.7081 14.5425C52.6078 15.7517 52.0772 17.5203 51.0161 21.0574L43.7609 45.2414C43.5549 45.9279 43.4519 46.2712 43.1862 46.4689C42.9205 46.6667 42.5621 46.6667 41.8452 46.6667H38.1547C37.4379 46.6667 37.0795 46.6667 36.8137 46.4689C36.548 46.2712 36.445 45.9279 36.239 45.2414L28.9839 21.0574Z"
+              stroke="#FFC700"
+              stroke-width="2"
+            />
+            <circle
+              cx="40"
+              cy="63.3333"
+              r="6.66667"
+              stroke="#FFC700"
+              stroke-width="2"
+            />
+          </svg>
+        </div>
+        <h2>You are offline</h2>
+        <p>Connect to the internet to load this content.</p>
+        <button onclick="document.location.reload();">try again</button>
+      </div>
+    </div>
+  </body>
+</html>

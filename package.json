@@ -1,0 +1,48 @@
+{
+  "name": "Microfrontend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "ISC",
+  "private": true,
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "cross-env": "^7.0.3",
+    "eslint": "7",
+    "eslint-plugin-react": "^7.27.1",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "husky": "^7.0.4",
+    "lerna": "^4.0.0",
+    "lint-staged": "^12.1.2",
+    "prettier": "2.5.1",
+    "stylelint": "^14.1.0",
+    "stylelint-config-recommended": "^6.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0"
+  },
+  "scripts": {
+    "prettier:fix": "prettier --write **/src/**/*.js",
+    "lint": "eslint **/src/**/*.js",
+    "lint:styled": "stylelint **/src/**/*.styled.js",
+    "dev": "lerna run --parallel dev",
+    "build:prod": "lerna run --parallel build:prod",
+    "build:dev": "lerna run --parallel build:dev",
+    "build:qa": "lerna run --parallel build:qa",
+    "install": "lerna bootstrap",
+    "kill-ports": "npx kill-port --port 3000,3001,3002,3003,3005",
+    "server:prod": "cross-env CONFIG_FILE=./env/prod.env node server.js",
+    "server:dev": "cross-env CONFIG_FILE=./env/dev.env node server.js",
+    "server:qa": "cross-env CONFIG_FILE=./env/qa.env node server.js"
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run prettier:fix",
+      "npm run lint"
+    ]
+  },
+  "dependencies": {
+    "dotenv": "^14.2.0",
+    "fastify": "^3.25.3",
+    "fastify-http-proxy": "^6.2.1",
+    "fastify-static": "^4.5.0"
+  }
+}
